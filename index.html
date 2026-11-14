@@ -1,0 +1,51 @@
+<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"></head><body>
+<title>Concrete Jungle of Patience</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bungee&family=Jua&family=Noto+Sans+KR:wght@400;700&display=swap">
+<style>
+/* 세로 화면 하나짜리 게임: 720x1280 캔버스를 창에 맞춰 늘이고, 남는 곳은 해 질 녘 하늘색 */
+:root {
+  --dusk: #2a1b3d;
+  --ink: #15121c;
+  --glow: #ffb36b;
+  --paper: #fff4e6;
+  --font-game: "Jua", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  --font-body: "Noto Sans KR", "Malgun Gothic", "Apple SD Gothic Neo", sans-serif;
+  color-scheme: dark;
+}
+html, body { height: 100%; }
+body {
+  margin: 0; overflow: hidden;
+  background: linear-gradient(180deg, #2a1b3d 0%, #5b2f4f 60%, #a4484a 100%);
+  background-color: var(--dusk);
+  color: var(--paper);
+  font-family: var(--font-body);
+  -webkit-user-select: none; user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+#stage { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+  padding: env(safe-area-inset-top, 0px) env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px); }
+#wrap { position: relative; line-height: 0; }
+#game { display: block; touch-action: none; border-radius: 8px; box-shadow: 0 12px 48px rgba(0,0,0,.5); }
+#name {
+  position: absolute; display: none; box-sizing: border-box;
+  font-family: var(--font-body); color: var(--ink);
+  background: #fff; border: 3px solid var(--ink); border-radius: 12px;
+  padding: 0 12px; outline: none; line-height: normal;
+  -webkit-user-select: text; user-select: text;
+}
+#name:focus-visible { box-shadow: 0 0 0 3px var(--glow); }
+@media (prefers-reduced-motion: reduce) { #game { box-shadow: none; } }
+</style>
+
+<div id="stage">
+  <div id="wrap">
+    <canvas id="game" width="1080" height="1280" aria-label="Concrete Jungle of Patience 게임 화면"></canvas>
+    <input id="name" type="text" maxlength="8" autocomplete="off" enterkeyhint="done" aria-label="랭킹에 남길 이름">
+  </div>
+</div>
+<script src="config.js"></script>
+<script src="game.js"></script>
+</body></html>
